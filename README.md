@@ -5,5 +5,3 @@ Demonstrates using Redux library to create a simple counter app that increments 
 View -> Dispatcher -> Reducer -> State -> View
 
 [Live Example](https://jongrover.github.io/redux-es5-counter/)
-
-I'm a beginner so if there is a different way to implement this truer to the Redux way, let me know.
