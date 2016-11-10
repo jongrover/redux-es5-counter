@@ -16,7 +16,7 @@
   <!-- app code -->
   <script>
 
-    // 3. Reducer: Takes actions from dispatcher and updates the State accordingly.
+    // 3. Reducer: Takes actions from Dispatcher and updates the Store accordingly.
       function counter(state, action) {
         if (typeof state === 'undefined') {
           return 0;
@@ -30,14 +30,14 @@
         }
       }
 
-    // 4. State: Stores the applications state and makes changes when advised by Reducer.
+    // 4. Store: Stores the applications state and makes changes when advised by Reducer.
       var store = Redux.createStore(counter); // create a store that is linked to the reducer "counter".
 
-      function render() { // general purpose render function.
+      function render() { // General purpose render function.
         document.getElementById('result').innerText = store.getState(); // update the view with current state.
       } render(); // Called once at app start to show initial app state "0".
 
-      store.subscribe(render); // 5. Update the view upon State changes. Calls "render" using "subscribe" method.
+      store.subscribe(render); // 5. Update the View upon Store changes. Calls "render" using "subscribe" method.
 
     // 2. Dispatcher: Listens to View and passes action objects to the Reducer.
       document.getElementById('incr').addEventListener('click', function () {
@@ -48,9 +48,9 @@
         store.dispatch({ type: 'decrement' });
       });
 
-      //////////   ////////////////   /////////////   ///////////   //////////
-      // View //==>// Dispatcher //==>// Reducer //==>// State //==>// View //
-      //////////   ////////////////   /////////////   ///////////   //////////
+      ////////////   ////////////////   ///////////   //////////   ////////////
+      // Action //==>// Dispatcher //==>// Store //==>// View //==>// Action //
+      ////////////   ////////////////   ///////////   //////////   ////////////
 
   </script>
 </body>
