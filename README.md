@@ -6,3 +6,5 @@ Demonstrates using Redux architecture to create a simple number counter app that
     ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 
 [Live Example](https://jongrover.github.io/redux-es5-counter/)
+
+[Redux Documentation](http://redux.js.org/)
