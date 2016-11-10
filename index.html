@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 1. View: Presentation (UI) layer, sends event actions to the Dispatcher. -->
+  <h1>Redux Counter in ES5</h1>
+  <div id="result"></div>
+  <button id="incr">+</button><!-- We click and trigger an event that is handled by Dispatcher -->
+  <button id="decr">-</button>
+
+  <!-- link to Redux (or alternately include using NPM) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/3.6.0/redux.min.js"></script>
+  <!-- app code -->
+  <script>
+
+    // 3. Reducer: Takes actions from dispatcher and updates the State accordingly.
+      function counter(state, action) {
+        if (typeof state === 'undefined') {
+          return 0;
+        }
+        if (action.type === 'increment') {
+          return state + 1;
+        } else if (action.type === 'decrement') {
+          return state - 1;
+        } else {
+          return state;
+        }
+      }
+
+    // 4. State: Stores the applications state and makes changes when advised by Reducer.
+      var store = Redux.createStore(counter); // create a store that is linked to the reducer "counter".
+
+      function render() { // general purpose render function.
+        document.getElementById('result').innerText = store.getState(); // update the view with current state.
+      } render(); // Called once at app start to show initial app state "0".
+
+      store.subscribe(render); // 5. Update the view upon State changes. Calls "render" using "subscribe" method.
+
+    // 2. Dispatcher: Listens to View and passes action objects to the Reducer.
+      document.getElementById('incr').addEventListener('click', function () {
+        store.dispatch({ type: 'increment' }); // use "dispatch" method to pass an action object.
+      });
+
+      document.getElementById('decr').addEventListener('click', function () {
+        store.dispatch({ type: 'decrement' });
+      });
+
+      //////////   ////////////////   /////////////   ///////////   //////////
+      // View //==>// Dispatcher //==>// Reducer //==>// State //==>// View //
+      //////////   ////////////////   /////////////   ///////////   //////////
+
+  </script>
+</body>
+</html>
